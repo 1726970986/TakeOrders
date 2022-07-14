@@ -145,7 +145,7 @@
                     </div>
                     <div class="list-group m-2 ">
 
-                      <a href="#" class="list-group-item list-group-item-action border-0 "><i
+                      <a href="#" onclick="delAll()" class="list-group-item list-group-item-action border-0 "><i
                           class="icofont-logout fs-6 me-3"></i>退出登录</a>
                     </div>
                   </div>
@@ -768,15 +768,36 @@
                     </div>
                     <div class="col-sm-12">
                       <label for="formFileMultipleone" class="form-label">任务指派人</label>
-                      <select class="form-select appoint-person" multiple aria-label="Default select Priority">
-                        <option selected value="0">张三</option>
-                        <option value="1">李四</option>
-                        <option value="2">辜十四</option>
-                        <option value="3">王五</option>
-                        <option value="4">赵六</option>
-                        <option value="5">刘耀祖</option>
-                        <option value="5">覃鑫</option>
-                      </select>
+<!--                      <select class="form-select appoint-person" multiple aria-label="Default select Priority">-->
+<!--                        <option selected value="0">张三</option>-->
+<!--                        <option value="1">李四</option>-->
+<!--                        <option value="2">辜十四</option>-->
+<!--                        <option value="3">王五</option>-->
+<!--                        <option value="4">赵六</option>-->
+<!--                        <option value="5">刘耀祖</option>-->
+<!--                        <option value="5">覃鑫</option>-->
+<!--&lt;!&ndash;                      </select>&ndash;&gt;-->
+<!--                      <form class="form-select appoint-person" multiple aria-label="Default select Priority">-->
+<!--                        <input  value="0" type="checkbox">张三</input>-->
+<!--                        <input value="1" type="checkbox">李四</input>-->
+<!--                        <input value="2" type="checkbox">辜十四</input>-->
+<!--                        <input value="3" type="checkbox">王五</input>-->
+<!--                        <input value="4" type="checkbox">赵六</input>-->
+<!--                        <input value="5" type="checkbox">刘耀祖</input>-->
+<!--                        <input value="5" type="checkbox">覃鑫</input>-->
+<!--                      </form>-->
+
+                        <input id="id_select" readonly class="form-select appoint-person" multiple aria-label="Default select Priority" onclick="show_options();">
+                        <ul id="id_select_options">
+                          <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="0"/>张三</li>
+                          <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="1"/>李四</li>
+                          <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="2"/>辜十四</li>
+                          <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="3"/>王五</li>
+                          <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="4"/>赵六</li>
+                          <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="5"/>刘耀祖</li>
+                          <li><input type="checkbox" name="select_checkbox" onclick="chk_changed();" value="5"/>覃鑫</li>
+                        </ul>
+
                     </div>
                   </div>
                 </form>
@@ -874,15 +895,25 @@
                     </div>
                     <div class="col-sm-12">
                       <label for="formFileMultipleone" class="form-label">任务指派人</label>
-                      <select class="form-select" multiple aria-label="Default select Priority">
-                        <option selected>甲</option>
-                        <option selected value="1">乙</option>
-                        <option selected value="2">丙</option>
-                        <option selected value="3">丁</option>
-                        <option selected value="4">戊</option>
-                        <option value="5">文</option>
-                        <option value="5">武</option>
-                      </select>
+<!--                      <select class="form-select" multiple aria-label="Default select Priority">-->
+<!--                        <option selected>甲</option>-->
+<!--                        <option selected value="1">乙</option>-->
+<!--                        <option selected value="2">丙</option>-->
+<!--                        <option selected value="3">丁</option>-->
+<!--                        <option selected value="4">戊</option>-->
+<!--                        <option value="5">文</option>-->
+<!--                        <option value="5">武</option>-->
+<!--                      </select>-->
+                      <input id="id_select1" readonly class="form-select" multiple aria-label="Default select Priority" onclick="show_options();">
+                      <ul id="id_select_options1">
+                        <li><input type="checkbox" name="select_checkbox1" onclick="chk_changed1();" value="0"/>甲</li>
+                        <li><input type="checkbox" name="select_checkbox1" onclick="chk_changed1();" value="1"/>乙</li>
+                        <li><input type="checkbox" name="select_checkbox1" onclick="chk_changed1();" value="2"/>丙</li>
+                        <li><input type="checkbox" name="select_checkbox1" onclick="chk_changed1();" value="3"/>丁</li>
+                        <li><input type="checkbox" name="select_checkbox1" onclick="chk_changed1();" value="4"/>戊</li>
+                        <li><input type="checkbox" name="select_checkbox1" onclick="chk_changed1();" value="5"/>文</li>
+                        <li><input type="checkbox" name="select_checkbox1" onclick="chk_changed1();" value="5"/>武</li>
+                      </ul>
                     </div>
                   </div>
                 </form>
@@ -1003,6 +1034,60 @@
   <script src="assets/js/page/delete.js"></script>
   <script src="assets/js/page/establish.js"></script>
   <script src="assets/js/page/alter.js"></script>
+
+  <script>
+   function delAll() {
+        document.body.innerHTML='';
+   }
+
+  </script>
+  <script type="text/javascript">
+    //显示 - 隐藏下拉列表
+    $("#id_div").mouseleave( function(){
+      $("#id_select_options").hide();
+    } );
+
+    function show_options()
+    {
+      if( $("#id_select_options").is(":hidden") )
+        $("#id_select_options").show();
+      else
+        $("#id_select_options").hide();
+    }
+
+    function show_options1()
+    {
+      if( $("#id_select_options1").is(":hidden") )
+        $("#id_select_options1").show();
+      else
+        $("#id_select_options1").hide();
+    }
+
+    function chk_changed1()
+    {
+      var str_selected = "";
+      var lstChk = document.getElementsByName( "select_checkbox1" );
+      for( var n = 0; n < lstChk.length; n++ )
+      {
+        if( lstChk[n].checked )
+          str_selected = str_selected + "/" + lstChk[n].value;
+      }
+      $("#id_select1").val( str_selected.substring( 1, str_selected.length ) );
+    }
+
+    //复选框勾选，更新显示
+    function chk_changed()
+    {
+      var str_selected = "";
+      var lstChk = document.getElementsByName( "select_checkbox" );
+      for( var n = 0; n < lstChk.length; n++ )
+      {
+        if( lstChk[n].checked )
+          str_selected = str_selected + "/" + lstChk[n].value;
+      }
+     $("#id_select").val( str_selected.substring( 1, str_selected.length ) );
+    }
+  </script>
 
 </body>
 
